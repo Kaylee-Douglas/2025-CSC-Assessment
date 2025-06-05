@@ -26,6 +26,10 @@ shop = {'no':"7", "description":"Where goods can be purchased", "north":"0", "so
 native_bush = {'no':"8", "description":"Untamed native bush past the limits of town", "north":"5", "south":"0", "east":"9", "west":"0"}
 koro_house = {'no':"9", "description":"Home to the player character's Grandfather", "North":"6", "South":"0", "East":"0", "West":"8"}
 
+# find sprites
+BCG_HOME = pygame.image.load(
+    os.path.join('Sprites','home_screen.png'))
+
 #while program is running
 while running:
     # check game is running
@@ -39,7 +43,7 @@ while running:
     # print(x, y)
 
     # render game
-    win.fill("purple") # blank screen - this will be removed
+    win.blit(BCG_HOME, (0, 0)) # place background
 
     # updates screen
     pygame.display.flip()
