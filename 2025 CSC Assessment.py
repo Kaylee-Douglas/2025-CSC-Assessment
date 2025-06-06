@@ -2,7 +2,6 @@
 # 2CSC
 
 # import GUI
-#pip install pygame
 import pygame
 import os
 
@@ -16,19 +15,20 @@ running = True
 # set up areas
 # each dictionary contains information for each area, including what is in each direction
 # '0' means that there is no room accessable from that point in that direction.
-home = {'no':"1", "description":"Starting point for user", "north":"0", "south":"2", "east":"0", "west":"0"}
-bus_stop = {'no':"2", "description":"A bus stop, which doesn't appear to be in use", "north":"1", "south":"0", "east":"3", "west":"0"}
-sign_posts = {'no':"3", "description":"Can be inspected for directions", "north":"0", "south":"4", "east":"0", "west":"2"}
-empty_road = {'no':"4", "description":"A road which seems to stretch forever", "north":"3", "south":"6", "east":"0", "west":"0"}
-translators_home = {'no':"5", "descriptions":"The man who lives here can translate between English and Maori", "north":"0", "south":"8", "east":"6", "west":"0"}
-market = {'no':"6", "description":"Food market, navigation point", "north":"4", "south":"9", "east":"7", "west":"5"}
-shop = {'no':"7", "description":"Where goods can be purchased", "north":"0", "south":"0", "east":"0", "west":"6"}
-native_bush = {'no':"8", "description":"Untamed native bush past the limits of town", "north":"5", "south":"0", "east":"9", "west":"0"}
-koro_house = {'no':"9", "description":"Home to the player character's Grandfather", "North":"6", "South":"0", "East":"0", "West":"8"}
+area_1 = {'title':"home", "description":"Starting point for user", "north":"0", "south":"2", "east":"0", "west":"0"}
+area_2 = {'title':"bus stop", "description":"A bus stop, which doesn't appear to be in use", "north":"1", "south":"0", "east":"3", "west":"0"}
+area_3 = {'title':"sign post", "description":"Can be inspected for directions", "north":"0", "south":"4", "east":"0", "west":"2"}
+area_4 = {'title':"empty road", "description":"A road which seems to stretch forever", "north":"3", "south":"6", "east":"0", "west":"0"}
+area_5 = {'title':"translators home", "descriptions":"The man who lives here can translate between English and Maori", "north":"0", "south":"8", "east":"6", "west":"0"}
+area_6 = {'title':"market", "description":"Food market, navigation point", "north":"4", "south":"9", "east":"7", "west":"5"}
+area_7 = {'title':"shop", "description":"Where goods can be purchased", "north":"0", "south":"0", "east":"0", "west":"6"}
+area_8 = {'title':"native bush", "description":"Untamed native bush past the limits of town", "north":"5", "south":"0", "east":"9", "west":"0"}
+area_9= {'title':"koro's house", "description":"Home to the player character's Grandfather", "North":"6", "South":"0", "East":"0", "West":"8"}
+locations_list = [area_1, area_2, area_3, area_4, area_5, area_6, area_7, area_8, area_9]
 
-# find sprites
+# retreives sprites from the sprites folder
 BCG_HOME = pygame.image.load(
-    os.path.join('Sprites','home_screen.png'))
+    os.path.join('Sprites','home_screen.png')) #finds sprite by it's folder and name
 
 #while program is running
 while running:
@@ -36,15 +36,13 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: # if it is identified that pygame has been quit
             running = False # stop & close program
-   
-    #Debug
-    x, y = pygame.mouse.get_pos() #get mouse position
-    #print mouse position
-    # print(x, y)
+    
+    def function_home():
+        win.blit(BCG_HOME, (0, 0)) # place background
 
-    # render game
-    win.blit(BCG_HOME, (0, 0)) # place background
-
+    def function_game():
+        win.blit(BCG_HOME, (0, 0)) # place background
+        #if () == active:
     # updates screen
     pygame.display.flip()
 
