@@ -16,7 +16,7 @@ running = True
 # each dictionary contains information for each area, including what is in each direction
 # '0' means that there is no room accessable from that point in that direction.
 area_1 = {'title':"home", "description":"a small farmhouse to the north of town", "north": 0, "south": 2, "east": 0, "west": 0, "active": False}
-area_2 = {'title':"bus stop", "description":"a graffitied old bench. It doesn't appear to have been used for a long while.", "north": 1, "south": 0, "east": 3, "west": 0, "active": False}
+area_2 = {'title':"bus stop", "description":"a graffitied old bench. It doesn't appear to have been used for a long while", "north": 1, "south": 0, "east": 3, "west": 0, "active": False}
 area_3 = {'title':"sign post", "description":"Can be inspected for directions", "north": 0, "south": 4, "east": 0, "west": 2, "active": False}
 area_4 = {'title':"empty road", "description":"A road which seems to stretch forever", "north": 3, "south": 6, "east": 0, "west": 0, "active": False}
 area_5 = {'title':"translators home", "description":"The man who lives here can translate between English and Maori", "north": 0, "south": 8, "east": 6, "west": 0, "active": False}
@@ -36,7 +36,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: # if it is identified that pygame has been quit
             running = False # stop & close program
-    #startgame
+    #start game
     def startgame():
         print("Welcome, user, to Kōrero.")
         username = input("What is your name?")
@@ -53,37 +53,37 @@ while running:
         elif begin == "No":
             print("Come back when you're ready.")
             quit()
-
+    #move between areas
     def travel():
         # Dictionary to map directions to their corresponding keys
         direction_map = {"North": "north","South": "south","East": "east","West": "west"}
-        # Find the currently active area
-        current_area = None
-        for area in locations_list.values():
+        # Finds the currently active area by checking every area in the area list
+        current_area = None 
+        for area in locations_list.values(): 
             if area["active"]:
                 current_area = area
-                break
+                break # immediatly stops the loop, meaning once it comes across an active area it will stop checking.
 
-        if current_area is None:
-            print("No active area found. Something might be wrong.")
-            return
+        if current_area is None: # if no areas are active
+            print("No areas are active. Something is probably broken.") # inform user
+            return # immediatly exits the 'travel()' function
 
         direction = input("What direction would you like to travel? ").strip().title()
 
         if direction in direction_map:
-            next_area_number = current_area[direction_map[direction]]  # Get the corresponding area number
+            next_area_number = current_area[direction_map[direction]]  # Get the corresponding area number by searching the area's dictionary
 
-            if next_area_number > 0:  # Ensure valid movement
+            if next_area_number > 0:  # If there is something in this direction
                 next_area = locations_list[next_area_number]  # Find correct area dictionary
             
-                print(f"Moving to: {next_area['title']}")  # Print movement
+                print(f"Moving to: {next_area['title']}")  # Print movement so user knows what's happening
             
                 current_area["active"] = False  # Deactivate current area
                 next_area["active"] = True  # Activate new area
             else:
-                print("No area is active - something is wrong.")
+                print("No area is active - something is wrong.") # if this occurs code needs fixing
         else:
-            print("Enter an actual direction - North, South, East, or West.")
+            print("Enter an actual direction - North, South, East, or West.") # if this occurs user entered an invalid input.
     
     # area one
     if area_1["active"]: #Because value is a boolean, it isn't required to specify what you're checking for
@@ -167,8 +167,8 @@ while running:
         print("area nine")
         travel()
 
-    else:
-        startgame()
+    else: # if the game is running but no areas are active
+        startgame() # call startgame function
     
     # win.blit(BCG_HOME, (0, 0)) # place background
 
