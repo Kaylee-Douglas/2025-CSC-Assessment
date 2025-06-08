@@ -31,6 +31,7 @@ locations_list = {1:area_1, 2:area_2, 3:area_3, 4:area_4, 5:area_5, 6:area_6, 7:
 
 #start game
 def startgame():
+    global username
     global running
     msgbox("Welcome, user, to Kōrero.")
     username = enterbox("What is your name?")
@@ -90,9 +91,9 @@ while running:
     if area_1["active"]: #Because value is a boolean, it isn't required to specify what you're checking for
         if objective == "blank":
             msgbox(f"You wake up in {area_1['description']}. This place is familar to you - it's your {area_1['title']}.")
-            msgbox("'Username!'") # this text will be a different color.
+            msgbox(f"{username}'") # this text will be a different color.
             msgbox("Another familar sound - it's your mother. She enters the room, looking worried.")
-            msgbox("There you are, Username. I promised your Koro that i'd bring him some things from the shop today, but i've forgotten what they were.") #color
+            msgbox(f"There you are, {username}. I promised your Koro that i'd bring him some things from the shop today, but i've forgotten what they were.") #color
             acceptquest = enterbox("Could you stop by and ask him? (Yes/No)").strip().title()
             while acceptquest not in ["Yes", "No"]:
                 msgbox("Please enter either 'Yes' or 'No'.")
