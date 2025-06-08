@@ -2,18 +2,16 @@
 # 2CSC
 
 # import GUI
-import pygame
 import os
 import random
+import easygui
+from easygui import *
 
-# set up GUI
-pygame.init()
-clock = pygame.time.Clock()
-# win = pygame.display.set_mode((480, 360))
-pygame.display.set_caption('Korero : Play')
+# set up game
 objective = "blank"
 words = {"Māori1":"English1","Māori2":"English2","Māori3":"English3" }
 random_item = random.choice(list(words.keys()))  # Selects a random key
+
 
 # set up areas
 # each dictionary contains information for each area, including what is in each direction
@@ -29,8 +27,7 @@ area_8 = {'title':"native bush", "description":"wild and towering landscape made
 area_9= {'title':"koro's house", "description":"Home to the player character's Grandfather", "north": 6, "south": 0, "east": 0, "west": 8, "active": False}
 locations_list = {1:area_1, 2:area_2, 3:area_3, 4:area_4, 5:area_5, 6:area_6, 7:area_7, 8:area_8, 9:area_9}
 # retreives sprites from the sprites folder
-BCG_HOME = pygame.image.load(
-    os.path.join('Sprites','home_screen.png')) #finds sprite by it's folder and name
+
 
 #start game
 def startgame():
@@ -55,10 +52,6 @@ startgame()
 
 #while program is running
 while running:
-    # check game is running
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT: # if it is identified that pygame has been quit
-            running = False # stop & close program
     #move between areas
     def travel():
         # Dictionary to map directions to their corresponding keys
@@ -332,14 +325,3 @@ while running:
                 print("No worries - You've completed your objective and won the game!")
                 print("Thank you for playing.")
                 quit()
-    
-    # win.blit(BCG_HOME, (0, 0)) # place background
-
-    # updates screen
-    #pygame.display.flip()
-
-    # limits FPS to 60
-    clock.tick(60)
-
-# close window
-pygame.quit()
