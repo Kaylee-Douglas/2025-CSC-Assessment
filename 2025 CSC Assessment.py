@@ -6,12 +6,10 @@ import os
 import random
 import easygui
 from easygui import *
-
 # set up game
 objective = "blank"
-words = {"Māori1":"English1","Māori2":"English2","Māori3":"English3" }
-random_item = random.choice(list(words.keys()))  # Selects a random key
-
+words = {"Maori1":"English1","Maori2":"English2","Maori3":"English3" }
+random_item = random.choice(list(words.keys()))  # Selects a random key 
 
 # set up areas
 # each dictionary contains information for each area, including what is in each direction
@@ -21,7 +19,7 @@ area_2 = {'title':"bus stop", "description":"a graffitied old bench. It doesn't 
 area_3 = {'title':"sign post", "description":"a muddied board, displaying directions to multiple locations", "north": 0, "south": 4, "east": 0, "west": 2, "active": False}
 area_4 = {'title':"empty road", "description":"A road which seems to stretch forever", "north": 3, "south": 6, "east": 0, "west": 0, "active": False}
 area_5 = {'title':"translators neighbourhood", "description":"line of neat, regal brick houses with perfectly trimmed grass", "north": 0, "south": 8, "east": 6, "west": 0, "active": False}
-area_6 = {'title':"market", "description":"a city of stalls engulfed in swarms of people trying to negotiate the best possible deal", "north": 4, "south": 9, "east": 7, "west": 5, "active": False}
+area_6 = {'title':"market", "description":"a city of stalls engulfed in swarms of people trying to negotiate the best possible deal", "north": 4, "south": 9, "east": 7, "west": 5, "active": True}
 area_7 = {'title':"shop", "description":"stoic old general store", "north": 0, "south": 0, "east": 0, "west": 6, "active": False}
 area_8 = {'title':"native bush", "description":"wild and towering landscape made up of great ferns", "north": 5, "south": 0, "east": 9, "west": 0, "active": False}
 area_9= {'title':"koro's house", "description":"Home to the player character's Grandfather", "north": 6, "south": 0, "east": 0, "west": 8, "active": False}
@@ -208,7 +206,7 @@ while running:
                     ask = enterbox("Ask them to translate something? (Yes/No)").strip().title()
                     while ask not in ["Yes", "No"]:
                         msgbox("Please enter either 'Yes' or 'No'.")
-                        talk = enterbox("Ask them to translate something? (Yes/No)").strip().title()
+                        ask = enterbox("Ask them to translate something? (Yes/No)").strip().title()
                     if ask == "Yes":
                         msgbox("They agree once again, and ask what you'd like to learn.")
                     word_to_translate = enterbox("What word would you like to translate?").strip().title()
@@ -229,6 +227,7 @@ while running:
                     if ask == "No":
                         msgbox("You excuse yourself from the conversation, deciding to continue your journey.")
                         travel()
+        travel()
 
     # area six
     if area_6["active"]:
@@ -264,8 +263,8 @@ while running:
                     travel()
                     break
             
-                if ask == {words[random_item]}:
-                    msgbox(f'Oh, a {words[random_item]}?')
+                if ask == words[random_item]:
+                    msgbox("Oh, a "+words[random_item]+'!')
                     msgbox('She nods, and takes your cash for the item. Better return to Koro and give this to him!')
                     objective = 'return'
                     travel()
