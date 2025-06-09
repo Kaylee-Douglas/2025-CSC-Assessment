@@ -8,7 +8,7 @@ import easygui
 from easygui import *
 # set up variables for game
 objective = "blank" #set initial objective
-words = {"Maori1":"English1","Maori2":"English2","Maori3":"English3" } #the objects that Koro can request and their english translations
+words = {"Maori1":"English1","Maori2":"English2","Maori3":"English3"} #the objects that Koro can request and their english translations
 random_item = random.choice(list(words.keys()))  # Selects a random key from the words dictionary
 
 # set up areas
@@ -315,11 +315,16 @@ while running:
                 msgbox("Please enter either 'Yes' or 'No'.")
                 ask = enterbox("Ask him if he needs anything else? (Yes/No)").strip().title()
             if ask == "Yes":
-                random_item = random.choice(list(words.keys()))  # Selects a new random item (by selecting a key from list)
-                msgbox(f"Oh, thank you! I need - uh, {random_item}. I don't know the English name - don't worry, i'm sure you can find someone to help! West of the market, maybe.")
-                msgbox('His smile unwavering, Koro hands you the money needed for the purchase and you head away.')
-                objective = 'translate'
-                travel()
+                if words != {}:
+                    random_item = random.choice(list(words.keys()))  # Selects a new random item (by selecting a key from list)
+                    msgbox(f"Oh, thank you! I need - uh, {random_item}. I don't know the English name - don't worry, i'm sure you can find someone to help! West of the market, maybe.")
+                    msgbox('His smile unwavering, Koro hands you the money needed for the purchase and you head away.')
+                    objective = 'translate'
+                    travel()
+                else:
+                    msgbox("'No, I don't need anything else.'")
+                    msgbox("You've won the game - Thank you for playing.")
+                    quit()
             elif ask == "No":
                 msgbox("No worries - You've completed your objective and won the game!")
                 msgbox("Thank you for playing.")
