@@ -193,7 +193,7 @@ while running:
                 approach = enterbox("Approach them? (Yes/No)").strip().title()
             if approach == "Yes":
                 msgbox('You approach the pair, and one of them calls a greeting.')
-                msgbox('Kia Ora!') 
+                msgbox("'Kia Ora!'") 
                 ask = enterbox("They seem nice. Do you want to ask them for help? (Yes/No)").strip().title()
                 while ask not in ["Yes", "No"]: # If user inputs a valid response
                     msgbox("Please enter either 'Yes' or 'No'.")
@@ -292,7 +292,7 @@ while running:
                 msgbox("Please enter either 'Yes' or 'No'.")
                 ask = enterbox("Ask Koro what he needs from the shop? (Yes/No)").strip().title() # Re ask question
             if ask == "Yes":
-                msgbox(f"Oh, thank you! I need - uh, {random_item}. I don't know the English name - don't worry, i'm sure you can find someone to help! West of the market, maybe.")
+                msgbox(f"'Oh, thank you! I need - uh, {random_item}. I don't know the English name - don't worry, i'm sure you can find someone to help! West of the market, maybe.'")
                 msgbox('His smile unwavering, Koro hands you the money needed for the purchase and you head away.')
                 objective = 'translate' # Change user objective to translate
                 travel() # Call travel function, allowing user to move.
