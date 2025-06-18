@@ -223,7 +223,6 @@ while running:
                     if ask == "No":
                         msgbox("You excuse yourself from the conversation, deciding to continue your journey.")
                         travel() # Call travel function, allowing user to move
-        travel() # Call travel function, allowing user to move
 
     # Area six
     if area_6["active"]: # If 'active' key in area_6 dictionary is true (if this area is active)
@@ -262,7 +261,6 @@ while running:
                     break
             
                 if ask == words[random_item]: # Check if user input is the thing Koro needs
-                    msgbox("Oh, a "+words[random_item]+'!') # Print confirmation
                     msgbox('She nods, and takes your cash for the item. Better return to Koro and give this to him!') 
                     objective = 'return' # Change objective to return, because item has been purchased.
                     travel() # Calls travel function, allowing user to move.
