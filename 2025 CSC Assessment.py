@@ -10,7 +10,6 @@ from easygui import *
 objective = "blank" #Set initial objective
 words = {"Panana":"Banana","Tiakarete":"Chocolate","Noni":"Vegetable Oil","Pata":"Butter","Huka":"Sugar","Ika":"Fish","Raihi":"Rice"} #The objects that Koro can request and their english translations
 random_item = random.choice(list(words.keys()))  # Selects a random key from the words dictionary
-
 # Set up areas
 # Each dictionary contains information for each area.
 # 'Title' and 'description' describe the area
@@ -176,7 +175,7 @@ while running:
                     word_to_translate = enterbox("What word would you like to translate?").strip().title()
 
                 if word_to_translate in words:  # Ensures translation only prints if a valid word is entered
-                    msgbox(f"Oh, sure! {word_to_translate} means {words[word_to_translate]}.")
+                    msgbox(f"'Oh, sure! {word_to_translate} means {words[word_to_translate]}.'")
                     msgbox(f"Perfect! Now you know what to buy from the store - and what {word_to_translate} means. You thank the pair, and head off.")
                     travel()
                 if ask == "No": # If user entered no
@@ -217,7 +216,7 @@ while running:
                         word_to_translate = enterbox("What word would you like to translate?").strip().title()
 
                     if word_to_translate in words:  # Ensures translation only prints if a valid word is entered
-                        msgbox(f"Oh, sure! {word_to_translate} means {words[word_to_translate]}.")
+                        msgbox(f"'Oh, sure! {word_to_translate} means {words[word_to_translate]}.'")
                         msgbox(f"Perfect! Now you know what to buy from the store - and what {word_to_translate} means. You thank the pair, and head off.")
                         objective = 'find shop' # Set objective to find the shop 
                         travel()
@@ -255,7 +254,7 @@ while running:
             # Start shop interaction.
             msgbox("You make your way over to the counter, and are greeted by a tired-looking salesperson.")
             while True:  # Loop until user enters the correct item or exits
-                ask = enterbox("Hi. What can I get for you?").strip().title()
+                ask = enterbox("'Hi. What can I get for you?'").strip().title()
             
                 if ask.lower() == "exit":  # Allows user to exit the interaction
                     msgbox("You decide to leave and return later.")
